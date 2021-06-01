@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GunSlinger
+// Human controlled player
+
+namespace WestWorld
 {
     public class HumanGunSlinger : GunSlinger
     {

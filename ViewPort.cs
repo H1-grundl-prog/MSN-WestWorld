@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GunSlinger
+// Camera / viewport class
+
+namespace WestWorld
 {
-    public class Camera
+    public class ViewPort
     {
-        public Camera() { }
+        public ViewPort() { }
 
         // Properties
         public Vec2 Position { get; set; }

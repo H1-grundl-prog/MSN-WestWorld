@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GunSlinger
+namespace WestWorld
 {
     public class Vec2
     {

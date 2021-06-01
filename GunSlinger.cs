@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GunSlinger
+// Gunslinger base class
+
+namespace WestWorld
 {
     public class GunSlinger
     {
-        // Gunslinger base class
         public GunSlinger() { }
 
         // Properties
-
+        public float Precision { get; set; }
+        public float Speed { get; set; }
+        public float HitPoints { get; set; }
         public Vec2 Position { get; set; }
+        public Vec2 GunAngle { get; set; }
     }
 }

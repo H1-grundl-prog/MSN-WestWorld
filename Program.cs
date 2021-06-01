@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GunSlinger
+namespace WestWorld
 {
     class Program
     {

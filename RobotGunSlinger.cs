@@ -1,9 +1,10 @@
-﻿using Arqan;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GunSlinger
+// AI controlled player. This is basically Yuel Brynner.
+
+namespace WestWorld
 {
     public class RobotGunSlinger : GunSlinger
     {
