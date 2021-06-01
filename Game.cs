@@ -1,30 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-// Main game controller class
+﻿// Main game controller class
 
 namespace WestWorld
 {
     public class Game
     {
-        public Game() { }
+        //
+        public Game(World world, ViewPort viewPort)
+        {
+            World = world;
+            ViewPort = viewPort;
+
+            GameInit();
+        }
 
         //
-        public void CreateNewGame()
+        public void GameInit()
+        {
+            IsGameRunning = true;
+
+            World.WorldInit();
+
+            ViewPort.InitScreen();
+
+            GameLoop();
+        }
+
+        public void GameLoop()
+        {
+            while (IsGameRunning)
+            {
+                ViewPort.DrawWorldToScreen(World);
+
+                //Thread.Sleep(10);
+            }
+
+            GameShutdown();
+        }
+
+        public void GameShutdown()
         {
 
         }
 
         //
-        public void CreateWorld()
-        {
-            World = new Roxel[Constants.GAME_WORLD_WIDTH, Constants.GAME_WORLD_HEIGHT];
-        }
+        bool IsGameRunning;
 
         //
-        public Roxel[,] World { get; set; }
-
-        public ViewPort Camera { get; set; }
+        public World World;
+        public ViewPort ViewPort;
     }
 }

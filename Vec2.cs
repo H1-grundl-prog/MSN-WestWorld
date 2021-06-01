@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WestWorld
 {
@@ -16,13 +14,13 @@ namespace WestWorld
         public Vec2(Vec2 v) { this.X = v.X; this.Y = v.Y; }
 
         // Operators
-        public static Vec2 operator + (Vec2 v) => v;
-        public static Vec2 operator + (Vec2 v1, Vec2 v2) => new Vec2(v1.X + v2.X, v1.Y + v2.Y);
-        public static Vec2 operator - (Vec2 v) => new Vec2(-v.X, -v.Y);
-        public static Vec2 operator - (Vec2 v1, Vec2 v2) => new Vec2(v1.X - v2.X, v1.Y - v2.Y);
-        public static Vec2 operator * (Vec2 v, double s) => new Vec2(v.X * s, v.Y * s);
-        public static Vec2 operator * (double s, Vec2 v) => new Vec2(s * v.X, s * v.Y);
-        public static Vec2 operator / (Vec2 v, double s) => new Vec2(v.X / s, v.Y / s);
+        public static Vec2 operator +(Vec2 v) => v;
+        public static Vec2 operator +(Vec2 v1, Vec2 v2) => new Vec2(v1.X + v2.X, v1.Y + v2.Y);
+        public static Vec2 operator -(Vec2 v) => new Vec2(-v.X, -v.Y);
+        public static Vec2 operator -(Vec2 v1, Vec2 v2) => new Vec2(v1.X - v2.X, v1.Y - v2.Y);
+        public static Vec2 operator *(Vec2 v, double s) => new Vec2(v.X * s, v.Y * s);
+        public static Vec2 operator *(double s, Vec2 v) => new Vec2(s * v.X, s * v.Y);
+        public static Vec2 operator /(Vec2 v, double s) => new Vec2(v.X / s, v.Y / s);
 
         // Methods
         public Vec2 Abs() { return new Vec2(Math.Abs(this.X), Math.Abs(this.Y)); }

@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micha\\source\\repos\\GunSlinger\\GunSlinger.csproj",
-      "projectName": "GunSlinger",
-      "projectPath": "C:\\Users\\micha\\source\\repos\\GunSlinger\\GunSlinger.csproj",
+      "projectUniqueName": "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj",
+      "projectName": "WestWorld",
+      "projectPath": "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj",
       "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\micha\\source\\repos\\GunSlinger\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-// Human controlled player
+﻿// Human controlled player
 
 namespace WestWorld
 {
