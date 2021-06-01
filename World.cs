@@ -19,9 +19,9 @@ namespace WestWorld
                 for (int y = 0; y < Roxels.GetLength(1); y++)
                 {
 
-                    Roxels[x, y].BgCol = ConsoleColor.DarkBlue;
-                    Roxels[x, y].FgCol = ConsoleColor.DarkGreen;
-                    Roxels[x, y].Char = '▒';
+                    //Roxels[x, y].BgCol = ConsoleColor.DarkBlue;
+                    //Roxels[x, y].FgCol = ConsoleColor.DarkGreen;
+                    //Roxels[x, y].Char = '▒';
                 }
             }
         }

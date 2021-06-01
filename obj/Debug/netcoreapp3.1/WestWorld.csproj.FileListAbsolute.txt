@@ -11,3 +11,16 @@ C:\Users\micha\source\repos\GunSlinger\obj\Debug\netcoreapp3.1\WestWorld.csproj.
 C:\Users\micha\source\repos\GunSlinger\obj\Debug\netcoreapp3.1\WestWorld.dll
 C:\Users\micha\source\repos\GunSlinger\obj\Debug\netcoreapp3.1\WestWorld.pdb
 C:\Users\micha\source\repos\GunSlinger\obj\Debug\netcoreapp3.1\WestWorld.genruntimeconfig.cache
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.csproj.AssemblyReference.cache
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.AssemblyInfoInputs.cache
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.AssemblyInfo.cs
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.csproj.CoreCompileInputs.cache
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.dll
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.pdb
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.exe
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.deps.json
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.runtimeconfig.json
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.runtimeconfig.dev.json
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.dll
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.pdb
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.genruntimeconfig.cache

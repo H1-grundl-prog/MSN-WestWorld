@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj": {}
+    "C:\\Users\\micha\\source\\repos\\WestWorld\\WestWorld.csproj": {}
   },
   "projects": {
-    "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj": {
+    "C:\\Users\\micha\\source\\repos\\WestWorld\\WestWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj",
+        "projectUniqueName": "C:\\Users\\micha\\source\\repos\\WestWorld\\WestWorld.csproj",
         "projectName": "WestWorld",
-        "projectPath": "C:\\Users\\micha\\source\\repos\\GunSlinger\\WestWorld.csproj",
+        "projectPath": "C:\\Users\\micha\\source\\repos\\WestWorld\\WestWorld.csproj",
         "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\micha\\source\\repos\\GunSlinger\\obj\\",
+        "outputPath": "C:\\Users\\micha\\source\\repos\\WestWorld\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
