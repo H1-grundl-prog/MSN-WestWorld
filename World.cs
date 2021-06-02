@@ -14,16 +14,16 @@ namespace WestWorld
         public void WorldInit()
         {
 
-            GunSlingers.Add(new RobotGunSlinger("Player 1", true, 0.1f, 1.0f, 100, 0));
-            GunSlingers.Add(new RobotGunSlinger("Player 2", true, 0.2f, 0.9f, 100, 0));
-            GunSlingers.Add(new RobotGunSlinger("Player 3", true, 0.2f, 0.9f, 100, 0));
-            GunSlingers.Add(new RobotGunSlinger("Player 4", true, 0.2f, 0.9f, 100, 0));
-            GunSlingers.Add(new RobotGunSlinger("Player 5", true, 1.0f, 1.0f, 100, 0));
+            GunSlingers.Add(new RobotGunSlinger("Player 1", "Slow shooter with good aim", true, 10, 90, 100, 0));
+            GunSlingers.Add(new RobotGunSlinger("Player 2", "Random drunk old guy", true, 20, 80, 100, 0));
+            GunSlingers.Add(new RobotGunSlinger("Player 3", "Average gunslinger", true, 30, 70, 100, 0));
+            GunSlingers.Add(new RobotGunSlinger("Player 4", "Quick shooter with bad aim", true, 40, 60, 100, 0));
+            GunSlingers.Add(new RobotGunSlinger("The Gunslinger", "Yuel Brynner", true, 100, 100, 100, 0));
         }
 
-        public HumanGunSlinger humanPlayer;
-        public RobotGunSlinger robotPlayer;
-        
-        public List<RobotGunSlinger> GunSlingers;
+        public HumanGunSlinger humanPlayer { get; set; }
+        public RobotGunSlinger robotPlayer { get; set; }
+
+        public List<RobotGunSlinger> GunSlingers { get; set; }
     }
 }

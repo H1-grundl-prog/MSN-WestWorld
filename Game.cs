@@ -1,12 +1,11 @@
 ﻿// Main game controller class
-
-using System.Threading;
+using System;
 
 namespace WestWorld
 {
     public class Game
     {
-        //
+        // Constructors
         public Game(World world, ViewPort viewPort)
         {
             World = world;
@@ -15,26 +14,60 @@ namespace WestWorld
             GameInit();
         }
 
-        //
+        // Methods
         public void GameInit()
         {
-            IsGameRunning = true;
-
             World.WorldInit();
 
             ViewPort.InitScreen();
+
+            ViewPort.ActiveScreen = Screens.WelcomeScreen;
 
             GameLoop();
         }
 
         public void GameLoop()
         {
-            ViewPort.ShowWelcomeScreen(World.GunSlingers);
-
-
-            while (IsGameRunning)
+            while (true)
             {
-                
+                switch(ViewPort.ActiveScreen)
+                {
+                    case Screens.WelcomeScreen:
+
+                        playerInput = ViewPort.ShowWelcomeScreen(World.GunSlingers);
+
+                        if (playerInput.keyInt >= 1 && playerInput.keyInt <= World.GunSlingers.Count)
+                        {
+                            World.robotPlayer = World.GunSlingers[playerInput.keyInt - 1];
+
+                            Console.WriteLine(World.robotPlayer.Name);
+
+                            ViewPort.ActiveScreen = Screens.GameScreen;
+                        }
+
+                        break;
+
+                    case Screens.GameScreen:
+
+                        playerInput = ViewPort.ShowGameScreen();
+
+                        switch (playerInput.keyPress.Key)
+                        {
+                            case ConsoleKey.Escape: // Quit
+                                GameShutdown();
+                                break;
+
+                            case ConsoleKey.Spacebar: // Shoot
+                                break;
+
+                        }
+
+                        break;
+                }
+
+                // Robot player AI
+                World.robotPlayer.Shoot();
+
             }
 
             GameShutdown();
@@ -45,10 +78,12 @@ namespace WestWorld
 
         }
 
-        //
-        bool IsGameRunning;
+        // Properties
+        public int NumRounds { get; set; }
+        public int CurrenRound { get; set; }
+        public PlayerInput playerInput { get; set; }
 
-        //
+        // Fields
         public World World;
         public ViewPort ViewPort;
     }

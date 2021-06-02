@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WestWorld
 {
     public class PlayerInput
     {
         public ConsoleKeyInfo keyPress;
+        public char keyChar;
+        public int keyInt;
     }
 }

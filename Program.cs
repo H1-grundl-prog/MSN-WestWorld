@@ -1,6 +1,4 @@
-﻿using System;
-
-/*
+﻿/*
  * Opgave:
  * 
  * Pull the trigger game:

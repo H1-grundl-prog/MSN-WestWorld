@@ -6,29 +6,32 @@ namespace WestWorld
     {
         public GunSlinger()
         {
-            Name      = "Gunslinger";
-            IsAlive   = true;
-            Precision = 0.5f;
-            Speed     = 0.5f;
+            Name = "Noname Gunslinger";
+            Description = "Average";
+            IsAlive = true;
+            Precision = 50;
+            Speed = 50;
             HitPoints = 100;
-            Score     = 0;
+            Score = 0;
         }
 
-        public GunSlinger(string name, bool isAlive, float precision, float speed, int hitPoints, int score)
+        public GunSlinger(string name, string description, bool isAlive, int precision, int speed, int hitPoints, int score)
         {
-            Name      = name;
-            IsAlive   = isAlive;
+            Name = name;
+            Description = description;
+            IsAlive = isAlive;
             Precision = precision;
-            Speed     = speed;
+            Speed = speed;
             HitPoints = hitPoints;
-            Score     = score;
+            Score = score;
         }
 
         // Properties
         public string Name { get; set; }
+        public string Description { get; set; }
         public bool IsAlive { get; set; }
-        public float Precision { get; set; }
-        public float Speed { get; set; }
+        public int Precision { get; set; }
+        public int Speed { get; set; }
         public int HitPoints { get; set; }
         public int Score { get; set; }
     }

@@ -2,10 +2,7 @@
 {
     public class Constants
     {
-        public const int GAME_WORLD_WIDTH = 240;
-        public const int GAME_WORLD_HEIGHT = 40;
-
-        public const int SCREEN_WIDTH = 200;
+        public const int SCREEN_WIDTH = 120;
         public const int SCREEN_HEIGHT = 40;
 
         // Console window manipulation (prevent resize and close)

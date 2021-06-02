@@ -5,8 +5,8 @@ namespace WestWorld
     public class HumanGunSlinger : GunSlinger
     {
         public HumanGunSlinger() : base() { }
-        
-        public HumanGunSlinger(string name, bool isAlive, float precision, float speed, int hitPoints, int score) : base(name, isAlive, precision, speed, hitPoints, score) { }
+
+        public HumanGunSlinger(string name, string description, bool isAlive, int precision, int speed, int hitPoints, int score) : base(name, description, isAlive, precision, speed, hitPoints, score) { }
 
 
 

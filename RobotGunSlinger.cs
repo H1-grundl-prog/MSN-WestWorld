@@ -6,6 +6,11 @@ namespace WestWorld
     {
         public RobotGunSlinger() : base() { }
 
-        public RobotGunSlinger(string name, bool isAlive, float precision, float speed, int hitPoints, int score) : base(name, isAlive, precision, speed, hitPoints, score) { }
+        public RobotGunSlinger(string name, string description, bool isAlive, int precision, int speed, int hitPoints, int score) : base(name, description, isAlive, precision, speed, hitPoints, score) { }
+    
+        public void Shoot()
+        {
+
+        }
     }
 }

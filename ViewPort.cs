@@ -1,7 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
 
 // Camera / viewport class
@@ -56,12 +54,12 @@ namespace WestWorld
             // Player input
             PlayerInput playerInput = new PlayerInput();
 
-            playerInput.keyPress = Console.ReadKey(false);
+            playerInput.keyInt = int.Parse(Console.ReadLine());
 
             return playerInput;
         }
 
-        public PlayerInput ShowChooseAttackScreen()
+        public PlayerInput ShowGameScreen()
         {
             Console.Clear();
 
@@ -74,14 +72,22 @@ namespace WestWorld
         }
         public void ShowGunSlingers(List<RobotGunSlinger> gunSlingers)
         {
-            Console.WriteLine($"Choose your opponent:");
+            Console.WriteLine($"Choose your opponent:\n");
 
-            int i = 0;
-            foreach( GunSlinger gunSlinger in gunSlingers)
+            int i = 1;
+            foreach (GunSlinger gunSlinger in gunSlingers)
             {
-                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Precision}, {gunSlinger.Speed}, {gunSlinger.HitPoints}");
+                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.Precision}, Speed: {gunSlinger.Speed}, Hitpoints: {gunSlinger.HitPoints})");
                 i++;
             }
         }
+
+        public Screens ActiveScreen { get; set; }
+    }
+
+    public enum Screens
+    {
+        WelcomeScreen,
+        GameScreen
     }
 }
