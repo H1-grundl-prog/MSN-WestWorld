@@ -1,5 +1,7 @@
 ﻿// Main game controller class
 
+using System.Threading;
+
 namespace WestWorld
 {
     public class Game
@@ -31,7 +33,7 @@ namespace WestWorld
             {
                 ViewPort.DrawWorldToScreen(World);
 
-                //Thread.Sleep(10);
+                Thread.Sleep(10);
             }
 
             GameShutdown();

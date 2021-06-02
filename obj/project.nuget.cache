@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "opmk4nZT/H/UtsbM5svpJREy8VVwtttyqz9kQQ97hEqpu4VyhQmpT9+vG1tSllP28gu2MdKqB64cCkJ/+ANh5w==",
+  "dgSpecHash": "v7u6kNYONBa07Blkwf1Jyolwgex+vIVYrFmtrhzU+wXv3ZruTOJyBN9dWfiVF8dL3sbMjCZnYOTRtxrdJJQh4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\micha\\source\\repos\\WestWorld\\WestWorld.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\glfw-net\\3.3.1\\glfw-net.3.3.1.nupkg.sha512"
+  ],
   "logs": []
 }

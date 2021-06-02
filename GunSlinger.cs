@@ -10,6 +10,7 @@ namespace WestWorld
             Precision = 0.5f;
             Speed = 0.5f;
             HitPoints = 100;
+            Score = 0;
         }
 
         // Properties
@@ -17,8 +18,6 @@ namespace WestWorld
         public float Precision { get; set; }
         public float Speed { get; set; }
         public int HitPoints { get; set; }
-        public Vec2 Position { get; set; }
-        public Vec2 GunAngle { get; set; }
-        public CharInfo Sprite { get; set; }
+        public int Score { get; set; }
     }
 }

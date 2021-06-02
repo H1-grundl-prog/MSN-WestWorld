@@ -24,3 +24,5 @@ C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.runtimec
 C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.dll
 C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\WestWorld.pdb
 C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.genruntimeconfig.cache
+C:\Users\micha\source\repos\WestWorld\bin\Debug\netcoreapp3.1\GLFW.NET.dll
+C:\Users\micha\source\repos\WestWorld\obj\Debug\netcoreapp3.1\WestWorld.csproj.CopyComplete
