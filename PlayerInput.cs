@@ -6,6 +6,6 @@ namespace WestWorld
 {
     public class PlayerInput
     {
-        public ConsoleKey keyPress;
+        public ConsoleKeyInfo keyPress;
     }
 }

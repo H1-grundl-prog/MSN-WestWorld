@@ -4,6 +4,8 @@ namespace WestWorld
 {
     public class RobotGunSlinger : GunSlinger
     {
-        public RobotGunSlinger() { }
+        public RobotGunSlinger() : base() { }
+
+        public RobotGunSlinger(string name, bool isAlive, float precision, float speed, int hitPoints, int score) : base(name, isAlive, precision, speed, hitPoints, score) { }
     }
 }

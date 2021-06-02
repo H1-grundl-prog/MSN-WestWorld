@@ -3,10 +3,15 @@
 /*
  * Opgave:
  * 
+ * Pull the trigger game:
+ * - 1 player – 1 npc
+ * - Timer based
+ * - You need to be faster than enemy cowboy
+ * - Best out of 3 wins
+ * 
  * Kommentar:
  * 
  * Reference:
- * https://github.com/ForeverZer0/glfw-net
  * 
  */
 
@@ -16,9 +21,9 @@ namespace WestWorld
     {
         static void Main(string[] args)
         {
-            World world = new World(Constants.GAME_WORLD_WIDTH, Constants.GAME_WORLD_HEIGHT);
+            World world = new World();
 
-            ViewPort viewPort = new ViewPort(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            ViewPort viewPort = new ViewPort();
 
             Game gunSlingerGame = new Game(world, viewPort);
         }

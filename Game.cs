@@ -29,11 +29,12 @@ namespace WestWorld
 
         public void GameLoop()
         {
+            ViewPort.ShowWelcomeScreen(World.GunSlingers);
+
+
             while (IsGameRunning)
             {
-                ViewPort.DrawWorldToScreen(World);
-
-                Thread.Sleep(10);
+                
             }
 
             GameShutdown();

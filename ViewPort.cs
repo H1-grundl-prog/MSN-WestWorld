@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -46,7 +47,21 @@ namespace WestWorld
 
         // Methods
 
-        public PlayerInput ShowWelcomeScreen()
+        public PlayerInput ShowWelcomeScreen(List<RobotGunSlinger> gunSlingers)
+        {
+            Console.Clear();
+
+            ShowGunSlingers(gunSlingers);
+
+            // Player input
+            PlayerInput playerInput = new PlayerInput();
+
+            playerInput.keyPress = Console.ReadKey(false);
+
+            return playerInput;
+        }
+
+        public PlayerInput ShowChooseAttackScreen()
         {
             Console.Clear();
 
@@ -56,6 +71,17 @@ namespace WestWorld
             playerInput.keyPress = Console.ReadKey(false);
 
             return playerInput;
+        }
+        public void ShowGunSlingers(List<RobotGunSlinger> gunSlingers)
+        {
+            Console.WriteLine($"Choose your opponent:");
+
+            int i = 0;
+            foreach( GunSlinger gunSlinger in gunSlingers)
+            {
+                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Precision}, {gunSlinger.Speed}, {gunSlinger.HitPoints}");
+                i++;
+            }
         }
     }
 }
