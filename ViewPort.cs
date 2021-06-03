@@ -45,16 +45,18 @@ namespace WestWorld
 
         // Methods
 
-        public PlayerInput ShowWelcomeScreen(List<RobotGunSlinger> gunSlingers)
+        public PlayerInput ShowWelcomeScreen(World world)
         {
             Console.Clear();
 
-            ShowGunSlingers(gunSlingers);
+            ShowGunSlingers(world.GoodGunSlingers);
 
             // Player input
             PlayerInput playerInput = new PlayerInput();
 
             playerInput.keyInt = int.Parse(Console.ReadLine());
+
+            ShowGunSlingers(world.BadGunSlingers);
 
             return playerInput;
         }
@@ -70,7 +72,8 @@ namespace WestWorld
 
             return playerInput;
         }
-        public void ShowGunSlingers(List<RobotGunSlinger> gunSlingers)
+
+        public void ShowGunSlingers(List<GunSlinger> gunSlingers)
         {
             Console.WriteLine($"Choose your opponent:\n");
 

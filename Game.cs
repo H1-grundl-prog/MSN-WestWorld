@@ -28,45 +28,32 @@ namespace WestWorld
 
         public void GameLoop()
         {
+            // Welcome menu
+            PlayerInput = ViewPort.ShowWelcomeScreen(World);
+
+            if (PlayerInput.keyInt >= 1 && PlayerInput.keyInt <= World.BadGunSlingers.Count)
+            {
+                World.robotPlayer = World.BadGunSlingers[PlayerInput.keyInt - 1];
+
+                Console.WriteLine(World.robotPlayer.Name);
+            }
+
             while (true)
             {
-                switch(ViewPort.ActiveScreen)
+                switch (PlayerInput.keyPress.Key)
                 {
-                    case Screens.WelcomeScreen:
-
-                        playerInput = ViewPort.ShowWelcomeScreen(World.GunSlingers);
-
-                        if (playerInput.keyInt >= 1 && playerInput.keyInt <= World.GunSlingers.Count)
-                        {
-                            World.robotPlayer = World.GunSlingers[playerInput.keyInt - 1];
-
-                            Console.WriteLine(World.robotPlayer.Name);
-
-                            ViewPort.ActiveScreen = Screens.GameScreen;
-                        }
-
+                    case ConsoleKey.Escape: // Quit
+                        GameShutdown();
                         break;
 
-                    case Screens.GameScreen:
-
-                        playerInput = ViewPort.ShowGameScreen();
-
-                        switch (playerInput.keyPress.Key)
-                        {
-                            case ConsoleKey.Escape: // Quit
-                                GameShutdown();
-                                break;
-
-                            case ConsoleKey.Spacebar: // Shoot
-                                break;
-
-                        }
-
+                    case ConsoleKey.Spacebar: // Shoot
+                        World.humanPlayer.Shoot(World.robotPlayer);
                         break;
+
                 }
 
                 // Robot player AI
-                World.robotPlayer.Shoot();
+                World.robotPlayer.Shoot(World.humanPlayer);
 
             }
 
@@ -80,8 +67,8 @@ namespace WestWorld
 
         // Properties
         public int NumRounds { get; set; }
-        public int CurrenRound { get; set; }
-        public PlayerInput playerInput { get; set; }
+        public int CurrentRound { get; set; }
+        public PlayerInput PlayerInput { get; set; }
 
         // Fields
         public World World;
