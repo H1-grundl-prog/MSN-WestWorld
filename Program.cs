@@ -24,6 +24,8 @@ namespace WestWorld
             ViewPort viewPort = new ViewPort();
 
             Game gunSlingerGame = new Game(world, viewPort);
+
+            gunSlingerGame.GameInit();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace WestWorld
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
 
-        public void InitScreen()
+        public void Init()
         {
             // Console window manipulation (prevent resize and close)
             IntPtr handle = GetConsoleWindow();
@@ -47,50 +47,33 @@ namespace WestWorld
 
         public PlayerInput ShowWelcomeScreen(World world)
         {
+            PlayerInput playerInput = new PlayerInput();
+
             Console.Clear();
+
+            Console.WriteLine(" Choose your player:");
 
             ShowGunSlingers(world.GoodGunSlingers);
 
-            // Player input
-            PlayerInput playerInput = new PlayerInput();
+            playerInput.inputKeyPress1 = Console.ReadKey();
 
-            playerInput.keyInt = int.Parse(Console.ReadLine());
+            Console.WriteLine(" Now, choose your enemy:");
 
             ShowGunSlingers(world.BadGunSlingers);
 
-            return playerInput;
-        }
-
-        public PlayerInput ShowGameScreen()
-        {
-            Console.Clear();
-
-            // Player input
-            PlayerInput playerInput = new PlayerInput();
-
-            playerInput.keyPress = Console.ReadKey(false);
+            playerInput.inputKeyPress2 = Console.ReadKey();
 
             return playerInput;
         }
 
         public void ShowGunSlingers(List<GunSlinger> gunSlingers)
         {
-            Console.WriteLine($"Choose your opponent:\n");
-
             int i = 1;
             foreach (GunSlinger gunSlinger in gunSlingers)
             {
-                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.Precision}, Speed: {gunSlinger.Speed}, Hitpoints: {gunSlinger.HitPoints})");
+                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.Precision}, Reaction time: {gunSlinger.ReactionTime}, Hitpoints: {gunSlinger.HitPoints})");
                 i++;
             }
         }
-
-        public Screens ActiveScreen { get; set; }
-    }
-
-    public enum Screens
-    {
-        WelcomeScreen,
-        GameScreen
     }
 }
