@@ -6,12 +6,26 @@ namespace WestWorld
 {
     public class Game
     {
-        // Constructors
+        #region fields
+        int GameStartTime;
+        public World World;
+        public ViewPort ViewPort;
+        #endregion
+
+        #region properties
+        public int NumRounds { get; set; }
+        public int CurrentRound { get; set; }
+        public bool IsGameRunning { get; set; }
+        public PlayerInput PlayerInput { get; set; }
+        #endregion
+
+        #region constructors
         public Game(World world, ViewPort viewPort)
         {
             World = world;
             ViewPort = viewPort;
         }
+        #endregion
 
         // Methods
         public void GameInit()
@@ -57,26 +71,8 @@ namespace WestWorld
 
             while (IsGameRunning == true)
             {
-                
-                if ( Console.KeyAvailable == true)
-                {
-                    keyPressed = Console.ReadKey(false);
-                }
 
-                switch (keyPressed.Key)
-                {
-                    case ConsoleKey.Escape: // Quit
-                        IsGameRunning = false;
-                        break;
-
-                    case ConsoleKey.Spacebar: // Shoot
-                        Shoot(World.humanPlayer, World.robotPlayer);
-                        break;
-
-                }
-                
-
-                //Console.WriteLine(Console.KeyAvailable);
+                UpdateUserInput();
 
                 // Robot player AI
                 //Shoot(World.humanPlayer, World.robotPlayer);
@@ -117,8 +113,8 @@ namespace WestWorld
                 attacked.HitPoints -= 1; // * (Precision / MaxPrecision);
             }
 
-            attacker.CanShoot = false;
-            attacker.LastShootTime = Environment.TickCount;
+            //attacker.CanShoot = false;
+            //attacker.LastShootTime = Environment.TickCount;
         }
 
         public void UpdatePlayerLogic(GunSlinger g)
@@ -127,30 +123,37 @@ namespace WestWorld
             g.Precision = g.MaxPrecision * (g.HitPoints / g.MaxHitPoints);
             g.ReactionTime = g.MaxReactionTime * (g.HitPoints / g.MaxHitPoints);
 
-            if (g.HitPoints <= 0) { g.IsAlive = false; }
+            g.IsAlive = g.HitPoints > 0;
 
-            int timeSinceLastShot = Environment.TickCount - g.LastShootTime;
+            //int timeSinceLastShot = Environment.TickCount - g.LastShootTime;
 
-            if (timeSinceLastShot >= g.ReactionTime) { g.CanShoot = true; }
+            //if (timeSinceLastShot >= g.ReactionTime) { g.CanShoot = true; }
         }
+
+        public void UpdateUserInput()
+        {
+            if (Console.KeyAvailable == true)
+            {
+                keyPressed = Console.ReadKey(false);
+            }
+
+            switch (keyPressed.Key)
+            {
+                case ConsoleKey.Escape: // Quit
+                    IsGameRunning = false;
+                    break;
+
+                case ConsoleKey.Spacebar: // Shoot
+                    Shoot(World.humanPlayer, World.robotPlayer);
+                    break;
+
+            }
+        }
+
 
         public void GameShutdown()
         {
 
         }
-
-        // Properties
-        public ConsoleKeyInfo keyPressed;
-
-        int GameStartTime;
-
-        public int NumRounds { get; set; }
-        public int CurrentRound { get; set; }
-        public bool IsGameRunning { get; set; }
-        public PlayerInput PlayerInput { get; set; }
-
-        // Fields
-        public World World;
-        public ViewPort ViewPort;
     }
 }

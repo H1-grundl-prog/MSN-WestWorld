@@ -6,6 +6,22 @@ namespace WestWorld
 {
     public class GunSlinger
     {
+        # region properties
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool IsAlive { get; set; }
+        public bool CanShoot { get; set; }
+        public int Precision { get; set; }
+        public int MaxPrecision { get; set; }
+        public int ReactionTime { get; set; }
+        public int MaxReactionTime { get; set; }
+        public int HitPoints { get; set; }
+        public int MaxHitPoints { get; set; }
+        public int Score { get; set; }
+        public Revolver revolver { get; set; }
+        #endregion
+
+        #region constructors
         public GunSlinger() { }
 
         public GunSlinger(string name, string description, bool isAlive, bool canShoot, int precision, int reactionTime, int hitPoints, int score)
@@ -21,23 +37,7 @@ namespace WestWorld
             HitPoints = hitPoints;
             MaxHitPoints = hitPoints;
             Score = score;
-
-            LastShootTime = Environment.TickCount;
         }
-
-        public int LastShootTime { get; set; }
-
-        // Properties
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public bool IsAlive { get; set; }
-        public bool CanShoot { get; set; }
-        public int Precision { get; set; }
-        public int MaxPrecision { get; set; }
-        public int ReactionTime { get; set; } // In milliseconds
-        public int MaxReactionTime { get; set; }
-        public int HitPoints { get; set; }
-        public int MaxHitPoints { get; set; }
-        public int Score { get; set; }
+        #endregion
     }
 }
