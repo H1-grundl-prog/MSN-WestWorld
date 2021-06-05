@@ -2,7 +2,7 @@
 
 namespace WestWorld
 {
-    public class PlayerInput
+    public class Controls
     {
 
         public void ConvertConsoleKeyToInt()

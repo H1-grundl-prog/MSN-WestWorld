@@ -45,9 +45,9 @@ namespace WestWorld
 
         // Methods
 
-        public PlayerInput ShowWelcomeScreen(World world)
+        public Controls ShowWelcomeScreen(World world)
         {
-            PlayerInput playerInput = new PlayerInput();
+            Controls playerInput = new Controls();
 
             Console.Clear();
 

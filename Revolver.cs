@@ -7,6 +7,7 @@ namespace WestWorld
     public class Revolver
     {
         #region properties
+        public string name { get; set; }
         public int MaxNumBullets { get; set; }
         public int NumBullets { get; set; }
         public int ReloadTicks { get; set; } // Reload time in ticks
@@ -17,6 +18,19 @@ namespace WestWorld
         #endregion
 
         #region constructors
+        public Revolver()
+        {
+            ShootTimer = new CountDownTimer(ShootTicks);
+            ReloadTimer = new CountDownTimer(ReloadTicks, FinishReload);
+        }
+
+        public Revolver(int maxNumBullets, int numBullets, int reloadTicks, int shootTicks)
+        {
+            MaxNumBullets = maxNumBullets;
+            NumBullets = numBullets;
+            ReloadTicks = reloadTicks;
+            ShootTicks = shootTicks;
+        }
         #endregion
 
         #region methods
@@ -38,7 +52,7 @@ namespace WestWorld
             return true;
         }
         
-        public bool Reload()
+        public bool BeginReload()
         {
             if (ReloadTimer.IsRunning == true)
                 return false;
@@ -47,8 +61,19 @@ namespace WestWorld
                 return false;
 
             // Okay, we can reload
+            ReloadTimer.Start();
+            return true;
+        }
+
+        public bool FinishReload()
+        {
             NumBullets = MaxNumBullets;
             return true;
+        }
+
+        public override string ToString()
+        {
+            return "";
         }
         #endregion
     }

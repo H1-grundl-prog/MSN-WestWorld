@@ -16,7 +16,7 @@ namespace WestWorld
         public int NumRounds { get; set; }
         public int CurrentRound { get; set; }
         public bool IsGameRunning { get; set; }
-        public PlayerInput PlayerInput { get; set; }
+        public Controls PlayerInput { get; set; }
         #endregion
 
         #region constructors

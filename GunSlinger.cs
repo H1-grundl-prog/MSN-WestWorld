@@ -1,6 +1,7 @@
 ﻿// Gunslinger base class
 
 using System;
+using System.Collections.Generic;
 
 namespace WestWorld
 {
@@ -37,6 +38,13 @@ namespace WestWorld
             HitPoints = hitPoints;
             MaxHitPoints = hitPoints;
             Score = score;
+        }
+        #endregion
+
+        #region methods
+        public override string ToString()
+        {
+            return "";
         }
         #endregion
     }

@@ -11,6 +11,7 @@ namespace WestWorld
         public int TicksLeft { get; set; }
         public int StartTicks { get; set; }
         public bool IsRunning { get; set; }
+        public Func<bool> RunAfterCountDown { get; set; }
         #endregion
 
         #region constructors
@@ -21,6 +22,15 @@ namespace WestWorld
             StartTicks = 0;
             IsRunning = false;
         }
+
+        public CountDownTimer(int numTicks, Func<bool> runAfterCountDown)
+        {
+            NumTicks = numTicks;
+            TicksLeft = numTicks;
+            StartTicks = 0;
+            IsRunning = false;
+            RunAfterCountDown = runAfterCountDown;
+        }
         #endregion
 
         #region methods
@@ -29,18 +39,18 @@ namespace WestWorld
             if(IsRunning == false)
             {
                 IsRunning = true;
-                StartTicks = Environment.TickCount;
                 TicksLeft = NumTicks;
+                StartTicks = Environment.TickCount;
             }
         }
 
-        public void Stop()
+        public void Reset()
         {
             if (IsRunning == true)
             {
                 IsRunning = false;
-                StartTicks = Environment.TickCount;
                 TicksLeft = NumTicks;
+                StartTicks = 0;
             }
         }
 
@@ -55,7 +65,8 @@ namespace WestWorld
             }
             else
             {
-                IsRunning = false;
+                Reset();
+                RunAfterCountDown?.Invoke();
             }   
         }
 
