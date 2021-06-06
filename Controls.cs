@@ -6,10 +6,13 @@ namespace WestWorld
     public class Controls
     {
 
-        public void ConvertConsoleKeyToInt()
+        public void ParseConsoleKeyInfo()
         {
-            inputInt1 = (int)inputKeyPress1.Key - 48;
-            inputInt2 = (int)inputKeyPress2.Key - 48;
+            // check if input is integer
+            if(char.IsDigit((char)inputKeyPress.Key))
+            {
+                inputInt = (int)inputKeyPress.Key - 48;
+            }
         }
         
         public void GetUserInput()
@@ -28,13 +31,32 @@ namespace WestWorld
             Thread.Sleep(100);
         }
 
-        public ConsoleKeyInfo inputKeyPress1;
-        public ConsoleKeyInfo inputKeyPress2;
-        public char inputChar1;
-        public char inputChar2;
-        public int inputInt1;
-        public int inputInt2;
-        public string inputString1;
-        public string inputString2;
+        public void Reset()
+        {
+            lastInputKeyPress = inputKeyPress;
+            lastInputChar = inputChar;
+            lastInputInt = inputInt;
+            lastInputString = inputString;
+
+            inputKeyPress = new ConsoleKeyInfo();
+            inputChar = (char)0;
+            inputInt = 0;
+            inputString = "";
+        }
+
+        public void Update()
+        {
+            ParseConsoleKeyInfo();
+        }
+
+        public ConsoleKeyInfo inputKeyPress;
+        public char inputChar;
+        public int inputInt;
+        public string inputString;
+
+        public ConsoleKeyInfo lastInputKeyPress;
+        public char lastInputChar;
+        public int lastInputInt;
+        public string lastInputString;
     }
 }

@@ -47,48 +47,59 @@ namespace WestWorld
             // Welcome menu
             Controls = ViewPort.WelcomeScreen(World);
 
-            Controls.ConvertConsoleKeyToInt();
+            //
+            Controls = ViewPort.ChooseEnemyScreen(World);
 
-            Console.WriteLine(Controls.inputInt1);
-            Console.WriteLine(Controls.inputInt2);
+            Controls.Update();
 
-            if (Controls.inputInt1 >= 1 && Controls.inputInt1 <= World.GoodGunSlingers.Count)
+            if (Controls.inputInt >= 1 && Controls.inputInt <= World.BadGunSlingers.Count)
             {
-                World.humanPlayer = World.GoodGunSlingers[Controls.inputInt1 - 1];
+                World.robotPlayer = World.BadGunSlingers[Controls.inputInt - 1];
             }
             else
             {
-                World.robotPlayer = World.GoodGunSlingers[0];
+                var rand = new Random();
+
+                World.robotPlayer = World.BadGunSlingers[rand.Next(World.BadGunSlingers.Count)];
             }
 
-            if (Controls.inputInt2 >= 1 && Controls.inputInt2 <= World.BadGunSlingers.Count)
+            Controls = ViewPort.ChoosePlayerScreen(World);
+
+            Controls.Update();
+
+            if (Controls.inputInt >= 1 && Controls.inputInt <= World.GoodGunSlingers.Count)
             {
-                World.robotPlayer = World.BadGunSlingers[Controls.inputInt2 - 1];
+                World.humanPlayer = World.GoodGunSlingers[Controls.inputInt - 1];
             }
             else
             {
-                World.robotPlayer = World.BadGunSlingers[0];
+                var rand = new Random();
+
+                World.humanPlayer = World.GoodGunSlingers[rand.Next(World.GoodGunSlingers.Count)];
             }
 
-            if(World.humanPlayer == null || World.robotPlayer == null ) { return; }
+            if (World.humanPlayer == null || World.robotPlayer == null ) { GameLoop(); }
 
             while (IsGameRunning == true)
             {
-
+                //Console.Clear();
+                //Console.SetCursorPosition(1, 10);
+                
                 UpdateUserInput();
 
                 // Robot player AI
-                //Shoot(World.humanPlayer, World.robotPlayer);
+                World.robotPlayer.ReachForGun();
+
+                World.humanPlayer.ReactionTimer.Update();
+                World.robotPlayer.ReactionTimer.Update();
+
                 Shoot(World.robotPlayer, World.humanPlayer);
+                Shoot(World.humanPlayer, World.robotPlayer);
 
-                UpdatePlayerLogic(World.humanPlayer);
-                UpdatePlayerLogic(World.robotPlayer);
-
+                // Reset keyPressed (read-only)
                 keyPressed = new ConsoleKeyInfo();
 
-                Console.WriteLine(Environment.TickCount - GameStartTime);
-
-                Thread.Sleep(10);
+                //Thread.Sleep(10);
 
             }
 
@@ -97,20 +108,29 @@ namespace WestWorld
 
         public void Shoot(GunSlinger attacker, GunSlinger attacked)
         {
-            if (attacker.IsAlive == false || attacked.IsAlive == false) { return; }
+            if (!attacker.IsAlive || !attacked.IsAlive) { return; }
 
-            if (attacker.CanShoot == false ) { return; }
+            if (!attacker.HasDrawnGun) { return; }
+
+            Console.WriteLine($"{attacker.Name} fires revolver at {attacked.Name}!");
 
             var rand = new Random();
 
             // Did we hit the enemy?
-            bool didAttackerHitAttacked = attacker.HitChance >= rand.Next(attacker.MaxHitChance + 1);
+            bool didAttackerHitAttacked = attacker.HitChance >= rand.Next(101);
 
             // If yes, kill opponent
-            if (didAttackerHitAttacked == true)
+            if (didAttackerHitAttacked)
             {
+                Console.WriteLine($"{attacker.Name} hits {attacked.Name}!");
                 attacked.IsAlive = false;
             }
+            else
+            {
+                Console.WriteLine($"{attacker.Name} misses {attacked.Name}!");
+            }
+
+            attacker.HasDrawnGun = false;
         }
 
         public void UpdatePlayerLogic(GunSlinger g)
@@ -120,7 +140,7 @@ namespace WestWorld
 
         public void UpdateUserInput()
         {
-            if (Console.KeyAvailable == true)
+            if (Console.KeyAvailable)
             {
                 keyPressed = Console.ReadKey(false);
             }
@@ -132,12 +152,11 @@ namespace WestWorld
                     break;
 
                 case ConsoleKey.Spacebar: // Shoot
-                    Shoot(World.humanPlayer, World.robotPlayer);
+                    World.humanPlayer.ReachForGun();
                     break;
 
             }
         }
-
 
         public void GameShutdown()
         {

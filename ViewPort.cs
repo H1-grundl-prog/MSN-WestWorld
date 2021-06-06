@@ -8,7 +8,7 @@ namespace WestWorld
 {
     public class ViewPort
     {
-
+        
         // Console window manipulation (prevent resize and close)
         [DllImport("user32.dll")]
         public static extern int DeleteMenu(IntPtr hMenu, int nPosition, int wFlags);
@@ -19,6 +19,7 @@ namespace WestWorld
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
 
+        #region methods
         public void Init()
         {
             // Console window manipulation (prevent resize and close)
@@ -43,7 +44,7 @@ namespace WestWorld
             Console.Clear();
         }
 
-        // Methods
+        #region screen methods
 
         public Controls WelcomeScreen(World world)
         {
@@ -51,24 +52,9 @@ namespace WestWorld
 
             Console.Clear();
 
-            Console.WriteLine(" Choose your player:");
+            Console.WriteLine("Welcome to WestWorld!");
 
-            playerInput.inputKeyPress2 = Console.ReadKey();
-
-            return playerInput;
-        }
-
-        public Controls ChoosePlayerScreen(World world)
-        {
-            Controls playerInput = new Controls();
-
-            Console.Clear();
-
-            Console.WriteLine(" Choose your player:");
-
-            ListGunSlingers(world.GoodGunSlingers);
-
-            playerInput.inputKeyPress1 = Console.ReadKey();
+            playerInput.inputKeyPress = Console.ReadKey(false);
 
             return playerInput;
         }
@@ -79,23 +65,42 @@ namespace WestWorld
 
             Console.Clear();
 
-            Console.WriteLine(" Now, choose your enemy:");
+            Console.WriteLine("Choose your enemy:\n");
 
             ListGunSlingers(world.BadGunSlingers);
 
-            playerInput.inputKeyPress2 = Console.ReadKey();
+            playerInput.inputKeyPress = Console.ReadKey(false);
 
             return playerInput;
         }
+
+        public Controls ChoosePlayerScreen(World world)
+        {
+            Controls playerInput = new Controls();
+
+            Console.Clear();
+
+            Console.WriteLine("Choose your player:\n");
+
+            ListGunSlingers(world.GoodGunSlingers);
+
+            playerInput.inputKeyPress = Console.ReadKey(false);
+
+            return playerInput;
+        }
+
+        #endregion
 
         public void ListGunSlingers(List<GunSlinger> gunSlingers)
         {
             int i = 1;
             foreach (GunSlinger gunSlinger in gunSlingers)
             {
-                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.HitChance}, Reaction time: {gunSlinger.ReactionTicks})");
+                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Hit chance {gunSlinger.HitChance} %, Reaction time {gunSlinger.ReactionTime/1000f:n1} seconds)");
                 i++;
             }
         }
+
+        #endregion
     }
 }

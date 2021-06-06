@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPOI.SS.Formula.Functions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace WestWorld
         public int StartTime { get; set; }
         public int EndTime { get; set; }
         public bool IsRunning { get; set; }
-        public Func<bool> RunAfterCountDown { get; set; }
+        public Func<bool> CallBackMethod { get; set; }
         #endregion
 
         #region constructors
@@ -23,17 +24,17 @@ namespace WestWorld
             EndTime = 0;
             StartTime = 0;
             IsRunning = false;
-            RunAfterCountDown = null;
+            CallBackMethod = null;
         }
 
-        public CountDownTimer(int numTicks, Func<bool> runAfterCountDown)
+        public CountDownTimer(int numTicks, Func<bool> callBackMethod)
         {
             NumTicks = numTicks;
             TicksLeft = numTicks;
             EndTime = 0;
             StartTime = 0;
             IsRunning = false;
-            RunAfterCountDown = runAfterCountDown;
+            CallBackMethod = callBackMethod;
         }
         #endregion
 
@@ -44,7 +45,8 @@ namespace WestWorld
             {
                 IsRunning = true;
                 StartTime = Environment.TickCount;
-                EndTime = StartTime + NumTicks; 
+                EndTime = StartTime + NumTicks;
+                TicksLeft = NumTicks;
             }
         }
 
@@ -67,7 +69,8 @@ namespace WestWorld
             if(EndTime <= Environment.TickCount)
             {
                 Reset();
-                RunAfterCountDown?.Invoke();
+                //CallBackMethod?.Invoke();
+                CallBackMethod();
             }
             else
             {

@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
             "glfw-net": {
               "target": "Package",
               "version": "[3.3.1, )"
