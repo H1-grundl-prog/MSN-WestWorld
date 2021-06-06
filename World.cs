@@ -26,17 +26,17 @@ namespace WestWorld
         public void Init()
         {
 
-            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 100, 0));
-            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 100, 0));
-            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 100, 0));
-            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 100, 0));
-            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 100, 0));
+            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 0));
+            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 0));
+            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 0));
+            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 0));
+            BadGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 2000, 0));
 
-            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 100, 0));
-            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 100, 0));
-            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 100, 0));
-            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 100, 0));
-            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 100, 0));
+            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 0));
+            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 0));
+            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 0));
+            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 0));
+            GoodGunSlingers.Add(new GunSlinger("Player 5", "Average gunslinger", true, true, 10, 100, 0));
         }
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace WestWorld
 {
@@ -11,6 +12,22 @@ namespace WestWorld
             inputInt2 = (int)inputKeyPress2.Key - 48;
         }
         
+        public void GetUserInput()
+        {
+            if (Console.KeyAvailable)
+            {
+                if (Console.ReadKey().Key == ConsoleKey.Escape)
+                {
+                    do
+                    {
+                        Console.WriteLine("Press enter to resume");
+                    }
+                    while (Console.ReadKey().Key != ConsoleKey.Enter);
+                }
+            }
+            Thread.Sleep(100);
+        }
+
         public ConsoleKeyInfo inputKeyPress1;
         public ConsoleKeyInfo inputKeyPress2;
         public char inputChar1;

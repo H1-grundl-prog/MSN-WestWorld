@@ -9,7 +9,8 @@ namespace WestWorld
         #region properties
         public int NumTicks { get; set; }
         public int TicksLeft { get; set; }
-        public int StartTicks { get; set; }
+        public int StartTime { get; set; }
+        public int EndTime { get; set; }
         public bool IsRunning { get; set; }
         public Func<bool> RunAfterCountDown { get; set; }
         #endregion
@@ -19,15 +20,18 @@ namespace WestWorld
         {
             NumTicks = numTicks;
             TicksLeft = numTicks;
-            StartTicks = 0;
+            EndTime = 0;
+            StartTime = 0;
             IsRunning = false;
+            RunAfterCountDown = null;
         }
 
         public CountDownTimer(int numTicks, Func<bool> runAfterCountDown)
         {
             NumTicks = numTicks;
             TicksLeft = numTicks;
-            StartTicks = 0;
+            EndTime = 0;
+            StartTime = 0;
             IsRunning = false;
             RunAfterCountDown = runAfterCountDown;
         }
@@ -39,8 +43,8 @@ namespace WestWorld
             if(IsRunning == false)
             {
                 IsRunning = true;
-                TicksLeft = NumTicks;
-                StartTicks = Environment.TickCount;
+                StartTime = Environment.TickCount;
+                EndTime = StartTime + NumTicks; 
             }
         }
 
@@ -49,8 +53,9 @@ namespace WestWorld
             if (IsRunning == true)
             {
                 IsRunning = false;
-                TicksLeft = NumTicks;
-                StartTicks = 0;
+                EndTime = NumTicks;
+                TicksLeft = 0;
+                StartTime = 0;
             }
         }
 
@@ -59,20 +64,25 @@ namespace WestWorld
             if (IsRunning == false)
                 return;
                 
-            if(TicksLeft > 0)
-            {
-                TicksLeft = Environment.TickCount - StartTicks;
-            }
-            else
+            if(EndTime <= Environment.TickCount)
             {
                 Reset();
                 RunAfterCountDown?.Invoke();
-            }   
+            }
+            else
+            {
+                TicksLeft = EndTime - Environment.TickCount;
+            }
+        }
+
+        public int TimeLeftInSeconds()
+        {
+            return TicksLeft / 1000;
         }
 
         public override string ToString()
         {
-            return $"NumTicks: {NumTicks}, TicksLeft: {TicksLeft}, StartTicks: {StartTicks}, IsRunning: {IsRunning}";
+            return $"NumTicks: {NumTicks}, TicksLeft: {TicksLeft}, StartTicks: {StartTime}, IsRunning: {IsRunning}";
         }
         #endregion
     }

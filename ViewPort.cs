@@ -37,15 +37,15 @@ namespace WestWorld
 
             Console.SetWindowSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             Console.SetBufferSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Blue;
             Console.CursorVisible = false;
             Console.Clear();
         }
 
         // Methods
 
-        public Controls ShowWelcomeScreen(World world)
+        public Controls WelcomeScreen(World world)
         {
             Controls playerInput = new Controls();
 
@@ -53,25 +53,47 @@ namespace WestWorld
 
             Console.WriteLine(" Choose your player:");
 
-            ShowGunSlingers(world.GoodGunSlingers);
+            playerInput.inputKeyPress2 = Console.ReadKey();
+
+            return playerInput;
+        }
+
+        public Controls ChoosePlayerScreen(World world)
+        {
+            Controls playerInput = new Controls();
+
+            Console.Clear();
+
+            Console.WriteLine(" Choose your player:");
+
+            ListGunSlingers(world.GoodGunSlingers);
 
             playerInput.inputKeyPress1 = Console.ReadKey();
 
+            return playerInput;
+        }
+
+        public Controls ChooseEnemyScreen(World world)
+        {
+            Controls playerInput = new Controls();
+
+            Console.Clear();
+
             Console.WriteLine(" Now, choose your enemy:");
 
-            ShowGunSlingers(world.BadGunSlingers);
+            ListGunSlingers(world.BadGunSlingers);
 
             playerInput.inputKeyPress2 = Console.ReadKey();
 
             return playerInput;
         }
 
-        public void ShowGunSlingers(List<GunSlinger> gunSlingers)
+        public void ListGunSlingers(List<GunSlinger> gunSlingers)
         {
             int i = 1;
             foreach (GunSlinger gunSlinger in gunSlingers)
             {
-                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.Precision}, Reaction time: {gunSlinger.ReactionTime}, Hitpoints: {gunSlinger.HitPoints})");
+                Console.WriteLine($"({i}) {gunSlinger.Name}, {gunSlinger.Description} ( Precision: {gunSlinger.HitChance}, Reaction time: {gunSlinger.ReactionTicks})");
                 i++;
             }
         }

@@ -10,13 +10,15 @@ namespace WestWorld
         int GameStartTime;
         public World World;
         public ViewPort ViewPort;
+        public ConsoleKeyInfo keyPressed;
         #endregion
 
         #region properties
         public int NumRounds { get; set; }
         public int CurrentRound { get; set; }
         public bool IsGameRunning { get; set; }
-        public Controls PlayerInput { get; set; }
+        public Controls Controls { get; set; }
+        public CountDownTimer CountDown { get; set; }
         #endregion
 
         #region constructors
@@ -24,10 +26,12 @@ namespace WestWorld
         {
             World = world;
             ViewPort = viewPort;
+
+            CountDown = new CountDownTimer(3000);
         }
         #endregion
 
-        // Methods
+        #region methods
         public void GameInit()
         {
             World.Init();
@@ -41,26 +45,25 @@ namespace WestWorld
         public void GameLoop()
         {
             // Welcome menu
-            // Select player and opponent.
-            PlayerInput = ViewPort.ShowWelcomeScreen(World);
+            Controls = ViewPort.WelcomeScreen(World);
 
-            PlayerInput.ConvertConsoleKeyToInt();
+            Controls.ConvertConsoleKeyToInt();
 
-            Console.WriteLine(PlayerInput.inputInt1);
-            Console.WriteLine(PlayerInput.inputInt2);
+            Console.WriteLine(Controls.inputInt1);
+            Console.WriteLine(Controls.inputInt2);
 
-            if (PlayerInput.inputInt1 >= 1 && PlayerInput.inputInt1 <= World.GoodGunSlingers.Count)
+            if (Controls.inputInt1 >= 1 && Controls.inputInt1 <= World.GoodGunSlingers.Count)
             {
-                World.humanPlayer = World.GoodGunSlingers[PlayerInput.inputInt1 - 1];
+                World.humanPlayer = World.GoodGunSlingers[Controls.inputInt1 - 1];
             }
             else
             {
                 World.robotPlayer = World.GoodGunSlingers[0];
             }
 
-            if (PlayerInput.inputInt2 >= 1 && PlayerInput.inputInt2 <= World.BadGunSlingers.Count)
+            if (Controls.inputInt2 >= 1 && Controls.inputInt2 <= World.BadGunSlingers.Count)
             {
-                World.robotPlayer = World.BadGunSlingers[PlayerInput.inputInt2 - 1];
+                World.robotPlayer = World.BadGunSlingers[Controls.inputInt2 - 1];
             }
             else
             {
@@ -77,10 +80,6 @@ namespace WestWorld
                 // Robot player AI
                 //Shoot(World.humanPlayer, World.robotPlayer);
                 Shoot(World.robotPlayer, World.humanPlayer);
-
-                Console.WriteLine(World.humanPlayer.HitPoints);
-                Console.WriteLine(World.robotPlayer.HitPoints);
-                Console.WriteLine();
 
                 UpdatePlayerLogic(World.humanPlayer);
                 UpdatePlayerLogic(World.robotPlayer);
@@ -105,29 +104,18 @@ namespace WestWorld
             var rand = new Random();
 
             // Did we hit the enemy?
-            bool didAttackerHitAttacked = attacker.Precision >= rand.Next(attacker.MaxPrecision + 1) ? true : false;
+            bool didAttackerHitAttacked = attacker.HitChance >= rand.Next(attacker.MaxHitChance + 1);
 
-            // If yes, do damage
+            // If yes, kill opponent
             if (didAttackerHitAttacked == true)
             {
-                attacked.HitPoints -= 1; // * (Precision / MaxPrecision);
+                attacked.IsAlive = false;
             }
-
-            //attacker.CanShoot = false;
-            //attacker.LastShootTime = Environment.TickCount;
         }
 
         public void UpdatePlayerLogic(GunSlinger g)
         {
-            // Update precision and speed as a function of hitpoints
-            g.Precision = g.MaxPrecision * (g.HitPoints / g.MaxHitPoints);
-            g.ReactionTime = g.MaxReactionTime * (g.HitPoints / g.MaxHitPoints);
-
-            g.IsAlive = g.HitPoints > 0;
-
-            //int timeSinceLastShot = Environment.TickCount - g.LastShootTime;
-
-            //if (timeSinceLastShot >= g.ReactionTime) { g.CanShoot = true; }
+               
         }
 
         public void UpdateUserInput()
@@ -155,5 +143,6 @@ namespace WestWorld
         {
 
         }
+        #endregion
     }
 }
